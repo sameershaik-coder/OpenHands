@@ -1,5 +1,6 @@
 from .bash import CmdRunTool
-from .browser import BrowserTool
+
+# from .browser import BrowserTool
 from .finish import FinishTool
 from .ipython import IPythonTool
 from .llm_based_edit import LLMBasedFileEditTool
@@ -8,7 +9,6 @@ from .think import ThinkTool
 from .web_read import WebReadTool
 
 __all__ = [
-    'BrowserTool',
     'CmdRunTool',
     'FinishTool',
     'IPythonTool',

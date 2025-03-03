@@ -11,7 +11,6 @@ from litellm import (
 )
 
 from openhands.agenthub.codeact_agent.tools import (
-    BrowserTool,
     CmdRunTool,
     FinishTool,
     IPythonTool,
@@ -29,7 +28,6 @@ from openhands.events.action import (
     AgentDelegateAction,
     AgentFinishAction,
     AgentThinkAction,
-    BrowseInteractiveAction,
     BrowseURLAction,
     CmdRunAction,
     FileEditAction,
@@ -171,12 +169,12 @@ def response_to_actions(response: ModelResponse) -> list[Action]:
             # ================================================
             # BrowserTool
             # ================================================
-            elif tool_call.function.name == BrowserTool['function']['name']:
-                if 'code' not in arguments:
-                    raise FunctionCallValidationError(
-                        f'Missing required argument "code" in tool call {tool_call.function.name}'
-                    )
-                action = BrowseInteractiveAction(browser_actions=arguments['code'])
+            # elif tool_call.function.name == BrowserTool['function']['name']:
+            #     if 'code' not in arguments:
+            #         raise FunctionCallValidationError(
+            #             f'Missing required argument "code" in tool call {tool_call.function.name}'
+            #         )
+            #     action = BrowseInteractiveAction(browser_actions=arguments['code'])
 
             # ================================================
             # WebReadTool (simplified browsing)
@@ -223,7 +221,7 @@ def get_tools(
     tools = [CmdRunTool, ThinkTool, FinishTool]
     if codeact_enable_browsing:
         tools.append(WebReadTool)
-        tools.append(BrowserTool)
+        # tools.append(BrowserTool)
     if codeact_enable_jupyter:
         tools.append(IPythonTool)
     if codeact_enable_llm_editor:
