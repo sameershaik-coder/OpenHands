@@ -4,6 +4,11 @@ mamba create -n openhands python=3.12 poetry -y
 mamba activate openhands
 
 poetry install
+make build
+# make sure you are in only openhands env
+try to run the cli
+install python dependencies one by one
+
 
 # removed browser tool related code
 
