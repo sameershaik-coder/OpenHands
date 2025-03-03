@@ -1,5 +1,12 @@
 poetry run python -m openhands.core.cli
 
+mamba create -n openhands python=3.12 poetry -y
+mamba activate openhands
+
+poetry install
+
+# removed browser tool related code
+
 # debug
 {
             "name": "OpenHands CLI",
