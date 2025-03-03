@@ -1,0 +1,36 @@
+poetry run python -m openhands.core.cli
+
+# debug
+{
+            "name": "OpenHands CLI",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "openhands.core.cli",
+            "justMyCode": false
+        },
+
+# some working
+
+{
+    "name": "Run Main App as Module",
+    "type": "debugpy",
+    "request": "launch",
+    "module": "openhands.core.cli",
+    "python": "${command:python.interpreterPath}",
+    "console": "integratedTerminal",
+    "justMyCode": false,
+    "env": {
+        "PYTHONPATH": "${workspaceFolder}"
+    }
+},
+
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "poetry-run-setup",
+            "type": "shell",
+            "command": "poetry install"
+        }
+    ]
+}
