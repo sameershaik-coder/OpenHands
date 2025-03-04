@@ -98,6 +98,14 @@ class CodeActAgent(Agent):
         super().reset()
         self.pending_actions.clear()
 
+    def print_formatted_json(self, data):
+        try:
+            # Convert the input to a JSON string with indentation for formatting
+            formatted_json = json.dumps(data, indent=4)
+            print(formatted_json)
+        except (TypeError, ValueError) as e:
+            print(f'Error formatting JSON: {e}')
+
     def step(self, state: State) -> Action:
         """Performs one step using the CodeAct Agent.
         This includes gathering info on previous steps and prompting the model to make a command to execute.
@@ -126,7 +134,9 @@ class CodeActAgent(Agent):
         params: dict = {
             'messages': self.llm.format_messages_for_llm(messages),
         }
+        self.print_formatted_json(params['messages'])
         params['tools'] = self.tools
+        self.print_formatted_json(params['tools'])
         response = self.llm.completion(**params)
         actions = codeact_function_calling.response_to_actions(response)
         for action in actions:
