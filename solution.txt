@@ -1,0 +1,118 @@
+GitHub Actions Log Organization Solution Plan
+
+Problem:
+- GitHub Actions logs are too large and difficult to read
+- Browser sometimes struggles to load the complete logs
+- Logs are not well organized by sections
+
+Proposed Solution:
+Using GitHub Actions' built-in group functionality to make logs collapsible and organized.
+
+Technical Implementation Steps:
+
+1. Analysis Phase:
+   - Examine current GitHub Actions workflow files
+   - Identify major sections in the workflows that generate logs
+   - List all workflow files that need modification
+
+2. Implementation Phase:
+   Step 1: Add grouping syntax to workflow files
+   - Use GitHub Actions' ::group:: and ::endgroup:: commands
+   - Group related steps logically (e.g., setup, build, test)
+   - Example syntax:
+     ```yaml
+     - name: Build Process
+       run: |
+         echo "::group::Build Setup"
+         # build setup commands
+         echo "::endgroup::"
+         
+         echo "::group::Main Build"
+         # main build commands
+         echo "::endgroup::"
+     ```
+
+   Step 2: Organize logs by categories
+   - Setup/Environment preparation
+   - Dependencies installation
+   - Build process
+   - Test execution
+   - Deployment (if applicable)
+
+   Step 3: Add error handling and debug information
+   - Ensure errors are prominently visible
+   - Add debug information in collapsible sections
+
+   Step 4: Testing and Validation
+   - Test modified workflows
+   - Verify log readability and organization
+   - Check browser performance with new log structure
+
+Benefits:
+- Better organized and more readable logs
+- Reduced visual clutter
+- Faster log loading in browser
+- Easier debugging and issue tracking
+
+Current Status: Analysis Phase Complete
+
+Analysis Findings:
+1. Main workflow files requiring optimization:
+   - ghcr-build.yml (largest, with multiple jobs and complex steps)
+   - integration-runner.yml
+   - openhands-resolver.yml
+   - eval-runner.yml
+
+2. Key areas identified for log organization:
+   a) Build Process Logs:
+      - Docker build steps
+      - Image pushing/loading
+      - Hash verification steps
+   
+   b) Test Execution Logs:
+      - Unit tests
+      - Runtime tests
+      - Test coverage reports
+   
+   c) Setup and Configuration:
+      - Python/Poetry setup
+      - Docker setup
+      - Cache management
+   
+   d) PR and Repository Management:
+      - PR description updates
+      - Repository owner configuration
+      - Fork-specific operations
+
+3. Common patterns that need grouping:
+   - Environment setup steps
+   - Dependency installation
+   - Build processes
+   - Test execution
+   - Artifact handling
+   - PR management
+
+Implementation Progress:
+
+1. ghcr-build.yml (In Progress):
+   Completed changes:
+   - Added grouping for app image build and push steps
+   - Added grouping for runtime test execution and dependencies
+   - Added grouping for hash verification process
+   - Added grouping for PR description updates
+   
+   Remaining tasks:
+   - Add grouping for Python/Poetry setup steps
+   - Add grouping for Docker setup steps
+   - Add grouping for cache management
+   - Add grouping for fork-specific operations
+
+2. Next files to update:
+   - integration-runner.yml
+   - openhands-resolver.yml
+   - eval-runner.yml
+
+Would you like me to:
+a) Complete the remaining tasks in ghcr-build.yml
+b) Move on to the next workflow file
+c) Review the changes made so far

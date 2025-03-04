@@ -38,6 +38,12 @@ workspace_base = "./workspace"
 # Disable color in terminal output
 #disable_color = false
 
+# Log level (DEBUG, INFO, WARNING, ERROR)
+#log_level = "INFO"
+
+# Whether to log all events (can generate very verbose logs)
+#log_all_events = false
+
 # Enable saving and restoring the session when run from CLI
 #enable_cli_session = false
 
