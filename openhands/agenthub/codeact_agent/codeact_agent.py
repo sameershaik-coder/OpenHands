@@ -136,7 +136,7 @@ class CodeActAgent(Agent):
         }
         self.print_formatted_json(params['messages'])
         params['tools'] = self.tools
-        self.print_formatted_json(params['tools'])
+        # self.print_formatted_json(params['tools'])
         response = self.llm.completion(**params)
         actions = codeact_function_calling.response_to_actions(response)
         for action in actions:
